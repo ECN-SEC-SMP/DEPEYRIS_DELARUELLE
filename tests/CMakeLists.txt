@@ -6,7 +6,7 @@ enable_testing()
 
 # Définir les fichiers sources et d'en-tête nécessaires
 set(SOURCES
-    ../src/main.cpp
+    ../src/Jeu.cpp
 )
 
 set(HEADERS
@@ -17,14 +17,14 @@ add_library(my_library STATIC ${SOURCES} ${HEADERS})
 
 # Définir les fichiers de test
 set(TEST_SOURCES
-    TU.cpp
+    TU_jeu.cpp
 )
 
 # Créer un exécutable pour chaque fichier de test unitaire
-add_executable(TU TU.cpp)
+add_executable(TU_jeu TU_jeu.cpp)
 
 # Lier Google Test et les fichiers sources aux exécutables de test unitaire
-target_link_libraries(TU my_library gtest gtest_main)
+target_link_libraries(TU_jeu my_library gtest gtest_main)
 
 # Créer un exécutable global pour tous les tests unitaires
 add_executable(all_tests ${TEST_SOURCES})
@@ -33,4 +33,4 @@ add_executable(all_tests ${TEST_SOURCES})
 target_link_libraries(all_tests my_library gtest gtest_main)
 
 # Ajouter les tests
-add_test(NAME TU COMMAND TU)
+add_test(NAME TU_jeu COMMAND TU_jeu)

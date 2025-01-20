@@ -1,2 +1,6 @@
 build
 googletest
+doc/html
+doc/latex
+.vscode
+*.o
