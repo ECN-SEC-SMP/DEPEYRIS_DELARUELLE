@@ -12,24 +12,27 @@
 #define joueur_hpp
 
 #include <string>
+#include <iostream>
 
 class Joueur {
     public:
         Joueur();
-        Joueur(int id, std::string nom, int argent);
+        Joueur(std::string nom, int argent);
+        std::string getNom();
         int getArgent();
         int getTourPrison();
         int getNbCartePrison();
+        void setNom(std::string nom);
         void setArgent(int argent);
         void setTourPrison(int tour);
         void setNbCartePrison(int nb);
         void addArgent(int argent);
+        void removeArgent(int argent);
     private:
-        int id;
         std::string nom;
         int portefeuille;
         int nbCartePrison;
         int tourPrison;
-};
+} ;
 
 #endif

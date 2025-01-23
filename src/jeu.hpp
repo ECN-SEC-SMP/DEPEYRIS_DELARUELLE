@@ -35,6 +35,7 @@ class Jeu {
         void setNbHotelsRestants(int nb);
         void setNbMaisonsRestantes(int nb);
         int lancerDe();
+        void deplacementJoueur(case* case);
     private:
         void initialiserPlateau();
         Case* plateau [NB_CASES];

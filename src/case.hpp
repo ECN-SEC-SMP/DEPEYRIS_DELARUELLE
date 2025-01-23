@@ -8,7 +8,6 @@
  * @copyright Copyright (c) 2025
  * 
  */
-
 #ifndef case_hpp
 #define case_hpp
 

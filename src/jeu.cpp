@@ -5,6 +5,11 @@ Jeu::Jeu() {
     maisonsRestantes = NB_MAISONS;
 }
 
+/**
+ * @brief Renvoie un nombre aléatoire entre 1 et 6
+ * 
+ * @return int 
+ */
 int Jeu::lancerDe() {
     std::random_device dev;
     std::mt19937 rng(dev());

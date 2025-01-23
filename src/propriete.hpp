@@ -16,10 +16,11 @@
 class Propriete : public Case {
     public:
         Propriete();
+        Propriete(std::string nom, int prixAcquisition);
         Propriete(std::string nom, int prixAcquisition, int loyer);
-        virtual int calculLoyer();
+        virtual int calculLoyer() = 0;
         void payerLoyer(Joueur * joueur);
-        void vente(Joueur * joueur);
+        virtual void vente(Joueur * joueur);
         Joueur * getProprietaire();
         int getPrixAcquisition();
         int getLoyer();

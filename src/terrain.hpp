@@ -16,22 +16,20 @@
 class Terrain : public Propriete {
     public:
         Terrain();
-        Terrain(int id, std::string nom, int prix, int maison, bool hotel, int prixMaison, int idCouleur, int loyer[6]);
+        Terrain(std::string nom, int prix, int loyer, int maison, int idCouleur);
         void construireMaison();
         void detruireMaison();
-        void construireHotel();
-        void detruireHotel();
         int getMaison();
-        bool getHotel();
         int getPrixMaison();
         int getIdCouleur();
-        int getLoyer(int index);
+        int getLoyer();
+        void setMaison(int nbMaisons);
+        int calculLoyer() override;
+        void vente(Joueur * joueur) override;
     private:
         int maison;
-        bool hotel;
         int prixMaison;
         int idCouleur;
-        int loyer[6];
 } ;
 
 #endif

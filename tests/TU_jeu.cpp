@@ -11,9 +11,8 @@
 
 #include "../src/jeu.hpp"
 #include "gtest/gtest.h"
-#include <iostream>
 
-//test de la méthode lancerDe
+// test de la méthode lancerDe
 TEST(Jeu, lancerDe) {
     Jeu jeu;
     for(int i = 0; i < 1000; i++) {
