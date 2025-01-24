@@ -19,9 +19,9 @@ Propriete::Propriete() : Case(), proprietaire(nullptr), prixAcquisition(1000), l
 /**
  * @brief Constructeur de la classe Propriete avec les paramètres
  * 
- * @param nom 
- * @param prixAcquisition 
- * @param loyer 
+ * @param nom nom de la case
+ * @param prixAcquisition prix de vente de la case
+ * @param loyer loyer de la case 
  */
 Propriete::Propriete(std::string nom, int prixAcquisition, int loyer) : Case(nom), proprietaire(nullptr), prixAcquisition(prixAcquisition), loyer(loyer), hypotheque(false) {}
 
@@ -42,11 +42,11 @@ void Propriete::payerLoyer(Joueur * joueur) {
 /**
  * @brief Permet une transacation immobilière entre 2 joueurs (gare ou compagnie)
  * 
- * @param joueur 
+ * @param joueur joueur qui réalise l'acquisition
  */
 void Propriete::vente(Joueur * joueur) {
     if(this->getHypotheque()) {
-        throw "La maison est hypothéquée et ne peut pas être vendue";
+        throw "La propriété est hypothéquée et ne peut pas être vendue";
     } else if (joueur->getArgent() < this->prixAcquisition) {
         throw "L'acheteur ne possède pas les fonds suffisants pour réaliser l'acquisition";
     } else {

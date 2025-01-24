@@ -4,12 +4,14 @@
 void Chance::action(Joueur* joueur){
 
     int randomNumber = 0;
+    cartesChance carteRandom;
     std::random_device dev;
     std::mt19937 rng(dev());
-    std::uniform_int_distribution<std::mt19937::result_type> distChance(0,14); // distribution in range [1, 6]
+    std::uniform_int_distribution<std::mt19937::result_type> distChance(0,14); // distribution in range [0, 14]
     randomNumber = distChance(rng) ;
+    carteRandom = static_cast<cartesChance>(randomNumber);
 
-    switch (randomNumber)
+    switch (carteRandom)
     {
     case cartesChance::AVANCER_CASE_DEPART:
         std::cout << "Le joueur " << joueur->getNom() << "s'avance jusqu'à la case Départ." << std::endl;
@@ -57,7 +59,7 @@ void Chance::action(Joueur* joueur){
         /* Fonction à implémeter je sais pas ou*/
         break;    
     case cartesChance::AMENDE_EXCES_VITESSE:
-        std::cout << "Moalic s'est flashé au volant de sa BMW. Malheureusement pour vous, il a trouvé le moyen de faire payer l'amende à sa place.Le joueur " << joueur->getNom() << " doit payer 15 M." << std::endl;
+        std::cout << "Moalic s'est fait flashé au volant de sa BMW. Malheureusement pour vous, il a trouvé le moyen de faire payer l'amende à sa place.Le joueur " << joueur->getNom() << " doit payer 15 M." << std::endl;
         joueur->removeArgent(15);
         break;    
     case cartesChance::PAYEZ_FRAIS_SCOLARITE:

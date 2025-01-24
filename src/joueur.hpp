@@ -33,6 +33,7 @@ class Joueur {
         int portefeuille;
         int nbCartePrison;
         int tourPrison;
+        int compteurDouble;
 } ;
 
 #endif

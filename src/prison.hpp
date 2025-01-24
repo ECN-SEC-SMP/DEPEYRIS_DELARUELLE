@@ -19,8 +19,19 @@ class Prison : public Case {
     public:
         Prison();
         void action(Joueur* j);
+        void addPrisonnier(Joueur * j);
+        void removePrisonnier(Joueur * j);
+        std::vector<Joueur>* getPrisonnier();
+        void setPrisonnier(std::vector<Joueur>* prisionniers);
     private:
         std::vector<Joueur>* prisonniers;
+        enum states {
+            TEST_TOUR,
+            TEST_CARTE_LIBERATION,
+            LANCER_DE,
+            PAYER_POUR_SORTIR,
+            SORTIR
+        }
 } ;
 
 #endif
