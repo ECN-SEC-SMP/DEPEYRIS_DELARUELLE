@@ -9,8 +9,8 @@
  * 
  */
 
-#ifdef depart_hpp
 #ifndef depart_hpp
+#define depart_hpp
 
 #include "case.hpp"
 class Depart : public Case {

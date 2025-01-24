@@ -9,9 +9,13 @@
  * 
  */
 
-#ifdef chance_hpp
 #ifndef chance_hpp
+#define chance_hpp
 
+#include <stdio.h>
+#include "joueur.hpp"
+#include "constantes.hpp"
+#include "jeu.hpp"
 #include "case.hpp"
 class Chance : public Case {
     public:
