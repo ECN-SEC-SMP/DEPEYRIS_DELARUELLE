@@ -12,12 +12,4 @@
 #include "../src/jeu.hpp"
 #include "gtest/gtest.h"
 
-// test de la méthode lancerDe
-TEST(Jeu, lancerDe) {
-    Jeu jeu;
-    for(int i = 0; i < 1000; i++) {
-        int de = jeu.lancerDe();
-        EXPECT_GE(de, 1);
-        EXPECT_LE(de, 6);
-    }
-}
+

@@ -20,7 +20,6 @@
 #include "joueur.hpp"
 #include "constantes.hpp"
 #include <vector>
-#include <random>
 
 class Jeu {
     public:
@@ -34,8 +33,7 @@ class Jeu {
         int getNbMaisonsRestantes();
         void setNbHotelsRestants(int nb);
         void setNbMaisonsRestantes(int nb);
-        int lancerDe();
-        void deplacementJoueur(case* case);
+        void deplacementJoueur(Case* c);
     private:
         void initialiserPlateau();
         Case* plateau [NB_CASES];
