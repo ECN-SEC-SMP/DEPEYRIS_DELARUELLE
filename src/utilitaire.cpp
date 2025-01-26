@@ -1,7 +1,7 @@
 /**
  * @file utilitaire.cpp
  * @author DELARUELLE DEPEYRIS
- * @brief Définition des fonctions utilitaires du jeu
+ * @brief Definition des fonctions utilitaires du jeu
  * @version 0.1
  * @date 2025-01-26
  * 
@@ -11,7 +11,7 @@
 #include "utilitaire.hpp"
 
 /**
- * @brief Renvoie un nombre aléatoire entre 1 et 6
+ * @brief Renvoie un nombre aleatoire entre 1 et 6
  * 
  * @return int 
  */

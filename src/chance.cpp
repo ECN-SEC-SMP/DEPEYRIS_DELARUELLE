@@ -1,7 +1,7 @@
 /**
  * @file chance.cpp
  * @author DELARUELLE DEPEYRIS
- * @brief Définition des fonctions de la classe Chance
+ * @brief Definition des fonctions de la classe Chance
  * @version 0.1
  * @date 2025-01-26
  * 
@@ -11,13 +11,13 @@
 #include "chance.hpp"
 
 /**
- * @brief Constructeur par défaut de la classe Chance
+ * @brief Constructeur par defaut de la classe Chance
  * 
  */
 Chance::Chance() : Case("Chance") {}
 
 /**
- * @brief Tirer une carte chance et appliquer l'action associée
+ * @brief Tirer une carte chance et appliquer l'action associee
  * 
  * @param joueur joueur qui tire la carte
  */
@@ -31,25 +31,25 @@ void Chance::action(Joueur* joueur){
     {
         case cartesChance::AVANCER_CASE_DEPART:
         {
-            std::cout << "Le joueur " << joueur->getNom() << "s'avance jusqu'à la case Départ." << std::endl;
+            std::cout << "Le joueur " << joueur->getNom() << "s'avance jusqu'a la case Depart." << std::endl;
             joueur->deplacer(0); 
         } break;
 
         case cartesChance::RDV_RUE_LA_PAIX:
         {
-            std::cout << "Le joueur " << joueur->getNom() << "s'avance jusqu'à la rue de la Paix." << std::endl;
+            std::cout << "Le joueur " << joueur->getNom() << "s'avance jusqu'a la rue de la Paix." << std::endl;
             joueur->deplacer(39);
         } break;
 
         case cartesChance::RDV_HENRI_MARTIN:
         {
-            std::cout << "Le joueur " << joueur->getNom() << "s'avance jusqu'à l'avenue Henri Martin." << std::endl;
+            std::cout << "Le joueur " << joueur->getNom() << "s'avance jusqu'a l'avenue Henri Martin." << std::endl;
             joueur->deplacer(24);
         } break;
 
         case cartesChance::REPARATION_MAISON_4000_HOTEL_11500:
         {
-            std::cout << "Moalic est devenu fou au volant de sa BMW ! Le joueur " << joueur->getNom() << "doit réparer ses maisons (40 M chacunes) et ses hôtels (115 M chacuns)." << std::endl;
+            std::cout << "Moalic est devenu fou au volant de sa BMW ! Le joueur " << joueur->getNom() << "doit reparer ses maisons (40 M chacunes) et ses hotels (115 M chacuns)." << std::endl;
             int nbMaison = joueur->nbMaisonHotel()[0];
             int nbHotel = joueur->nbMaisonHotel()[1];
             joueur->removeArgent(nbMaison*40+nbHotel*115);
@@ -57,13 +57,13 @@ void Chance::action(Joueur* joueur){
 
         case cartesChance::AVANCER_GARE_DE_LYON:
         {
-            std::cout << "Le joueur " << joueur->getNom() << "s'avance jusqu'à la gare de Lyon." << std::endl;
+            std::cout << "Le joueur " << joueur->getNom() << "s'avance jusqu'a la gare de Lyon." << std::endl;
             joueur->deplacer(15);
         } break;
 
         case cartesChance::PRIX_MOTS_CROISES:
         {
-            std::cout << "Le joueur " << joueur->getNom() << "a gagné le tournoi des mots croisés. T'es vieux mais tu as 100 M en plus." << std::endl;
+            std::cout << "Le joueur " << joueur->getNom() << "a gagne le tournoi des mots croises. T'es vieux mais tu as 100 M en plus." << std::endl;
             joueur->addArgent(100);
         } break;  
 
@@ -93,7 +93,7 @@ void Chance::action(Joueur* joueur){
 
         case cartesChance::REPARATION_MAISON_2500_HOTEL_10000:
         {
-            std::cout << "Oh non, un Tommy sauvage est apparu ! Le joueur " << joueur->getNom() << "doit réparer ses maisons (25 M chacunes) et ses hôtels (100 M chacuns)." << std::endl;
+            std::cout << "Oh non, un Tommy sauvage est apparu ! Le joueur " << joueur->getNom() << "doit reparer ses maisons (25 M chacunes) et ses hotels (100 M chacuns)." << std::endl;
             int nbMaison = joueur->nbMaisonHotel()[0];
             int nbHotel = joueur->nbMaisonHotel()[1];
             joueur->removeArgent(nbMaison*25+nbHotel*100);
@@ -101,19 +101,19 @@ void Chance::action(Joueur* joueur){
 
         case cartesChance::AMENDE_EXCES_VITESSE:
         {
-            std::cout << "Moalic s'est fait flashé au volant de sa BMW. Malheureusement pour vous, il a trouvé le moyen de faire payer l'amende à sa place. Le joueur " << joueur->getNom() << " doit payer 15 M." << std::endl;
+            std::cout << "Moalic s'est fait flashe au volant de sa BMW. Malheureusement pour vous, il a trouve le moyen de faire payer l'amende a sa place. Le joueur " << joueur->getNom() << " doit payer 15 M." << std::endl;
             joueur->removeArgent(15);
         } break; 
 
         case cartesChance::PAYEZ_FRAIS_SCOLARITE:
         {
-            std::cout << "Le joueur " << joueur->getNom() << "s'écrit à Centrale. Il paie 150 M de frais de scolarité." << std::endl;
+            std::cout << "Le joueur " << joueur->getNom() << "s'ecrit a Centrale. Il paie 150 M de frais de scolarite." << std::endl;
             joueur->removeArgent(150);
         } break; 
 
         case cartesChance::AMENDE_IVRESSE:
         {
-            std::cout << "Le joueur " << joueur->getNom() << " est aussi torché que Zak. Il paie 20 M pour ivresse sur voie publique" << std::endl;
+            std::cout << "Le joueur " << joueur->getNom() << " est aussi torche que Zak. Il paie 20 M pour ivresse sur voie publique" << std::endl;
             joueur->removeArgent(20);
         } break;  
 
@@ -131,8 +131,8 @@ void Chance::action(Joueur* joueur){
         
         default:
         {
-            std::cout << "Le joueur " << joueur->getNom() << " est étourdi." << std::endl;
-            throw("Carte chance inconnue");
+            std::cout << "Le joueur " << joueur->getNom() << " est etourdi." << std::endl;
+            std::cout <<("Carte chance inconnue");
         } break;
     }
     

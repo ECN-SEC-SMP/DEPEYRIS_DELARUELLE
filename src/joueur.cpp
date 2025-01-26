@@ -1,7 +1,7 @@
 /**
  * @file joueur.cpp
  * @author DELARUELLE DEPEYRIS
- * @brief Définition des fonctions de la classe Joueur
+ * @brief Definition des fonctions de la classe Joueur
  * @version 0.1
  * @date 2025-01-20
  * 
@@ -18,7 +18,7 @@
 #include "terrain.hpp"
 
 // -------------------------------------------------------------------------- //
-// ------------------------------- Méthodes --------------------------------- //
+// ------------------------------- Methodes --------------------------------- //
 // -------------------------------------------------------------------------- //
 
 /**
@@ -37,7 +37,7 @@ Joueur::Joueur(std::string nom, int argent) : nom(nom), portefeuille(argent), nb
 
 
 /**
- * @brief Ajouter une propriété à la liste des propriétés du joueur
+ * @brief Ajouter une propriete a la liste des proprietes du joueur
  * 
  * @param propriete 
  */
@@ -46,7 +46,7 @@ void Joueur::addPropriete(Propriete * propriete) {
 }
 
 /**
- * @brief Retirer une propriété de la liste des propriétés du joueur
+ * @brief Retirer une propriete de la liste des proprietes du joueur
  * 
  * @param propriete 
  */
@@ -59,20 +59,20 @@ void Joueur::removePropriete(Propriete * propriete) {
 }
 
 /**
- * @brief Déplacer le joueur sur une nouvelle case
+ * @brief Deplacer le joueur sur une nouvelle case
  * 
  * @param numCase 
  */
 void Joueur::deplacer(int numCase) {
-    if ((numCase < this->getPosition()) && this->getTourPrison() == -1) {
+    if ((numCase <= this->getPosition()) && this->getTourPrison() == -1) {
         this->addArgent(200);
-        std::cout << this->getNom() << " passe par la case départ. Il reçoit 200 M." << std::endl ;
+        std::cout << this->getNom() << " passe par la case depart. Il reçoit 200 M." << std::endl ;
     }
     this->position = numCase;
 }
 
 /** 
- * @brief Compte le nombre de maisons et d'hotels possédés par le joueur
+ * @brief Compte le nombre de maisons et d'hotels possedes par le joueur
  * 
  * @param 
  */
@@ -116,7 +116,7 @@ void Joueur::addArgent(int argent) {
 void Joueur::removeArgent(int argent) {
    
     if (argent > this->portefeuille) {
-        throw "Pas assez d'argent";
+        std::cout << "Pas assez d'argent";
     } else {
         this->portefeuille -= argent;
     }  
@@ -141,7 +141,7 @@ int Joueur::getArgent() {
 }
 
 /**
- * @brief Obtenir le nombre de tours passés en prison par le joueur
+ * @brief Obtenir le nombre de tours passes en prison par le joueur
  * 
  * @return int 
  */
@@ -159,7 +159,7 @@ int Joueur::getNbCartePrison() {
 }
 
 /**
- * @brief Obtenir la liste des propriétés du joueur
+ * @brief Obtenir la liste des proprietes du joueur
  * 
  * @return std::vector<Propriete*> 
  */
@@ -174,6 +174,15 @@ std::vector<Propriete*> Joueur::getProprietes() {
  */
 int Joueur::getPosition() {
     return position;
+}
+
+/**
+ * @brief Obtenir le nombre de doubles effectués par le joueur
+ *
+ * @return int
+ */
+int Joueur::getCompteurDouble() {
+    return compteurDouble;
 }
 
 /**
@@ -195,7 +204,7 @@ void Joueur::setArgent(int argent) {
 }
 
 /**
- * @brief Initialiser le nombre de tours passés en prison par le joueur
+ * @brief Initialiser le nombre de tours passes en prison par le joueur
  * 
  * @param tour 
  */
@@ -213,7 +222,7 @@ void Joueur::setNbCartePrison(int nb) {
 }
 
 /**
- * @brief Initialiser la liste des propriétés du joueur
+ * @brief Initialiser la liste des proprietes du joueur
  * 
  * @param proprietes 
  */
@@ -228,6 +237,16 @@ void Joueur::setProprietes(std::vector<Propriete*> proprietes) {
  */
 void Joueur::setPosition(int position) {
     this->position = position;
+}
+
+
+/**
+ * @brief Initialiser la nombre de double faits par le joueur
+ *
+ * @param compteur
+ */
+void Joueur::setCompteurDouble(int compteur) {
+    this->compteurDouble = compteur;
 }
 
 

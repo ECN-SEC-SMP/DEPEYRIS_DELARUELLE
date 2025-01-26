@@ -60,6 +60,9 @@ TEST(Joueur, deplacement) {
     Joueur joueur;
     joueur.deplacer(5);
     EXPECT_EQ(joueur.getPosition(), 5);
+    joueur.deplacer(0);
+    EXPECT_EQ(joueur.getPosition(), 0);
+    EXPECT_EQ(joueur.getArgent(), 1700);
 }
 
 // test de la récupération du nombre de maisons et d'hôtels

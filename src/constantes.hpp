@@ -1,7 +1,7 @@
 /**
  * @file constantes.hpp
  * @author DELARUELLE DEPEYRIS
- * @brief Définition des constantes du jeu
+ * @brief Definition des constantes du jeu
  * @version 0.1
  * @date 2025-01-18
  * 

@@ -1,7 +1,7 @@
 /**
  * @file impots.cpp
  * @author DELARUELLE DEPEYRIS
- * @brief Définition des fonctions de la classe Impots
+ * @brief Definition des fonctions de la classe Impots
  * @version 0.1
  * @date 2025-01-26
  * 
@@ -11,13 +11,13 @@
 #include "impots.hpp"
 
 /**
- * @brief Constructeur par défaut de la classe Impots
+ * @brief Constructeur par defaut de la classe Impots
  * 
  */
 Impots::Impots() : Case("Impots") {}
 
 /**
- * @brief Action réalisée si un joueur est sur la case impots
+ * @brief Action realisee si un joueur est sur la case impots
  * 
  * @param j joueur sur la case impots
  */

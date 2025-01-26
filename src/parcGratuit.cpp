@@ -1,7 +1,7 @@
 /**
  * @file parcGratuit.cpp
  * @author DELARUELLE DEPEYRIS
- * @brief Définition des fonctions de la classe ParcGratuit
+ * @brief Definition des fonctions de la classe ParcGratuit
  * @version 0.1
  * @date 2025-01-26
  * 
@@ -17,7 +17,7 @@
 ParcGratuit::ParcGratuit() : Case("Parc Gratuit") {}
 
 /**
- * @brief action réalisée sur la case parc gratuit (rien)
+ * @brief action realisee sur la case parc gratuit (rien)
  * 
  * @param j joueur
  */

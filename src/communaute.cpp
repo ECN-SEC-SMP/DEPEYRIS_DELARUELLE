@@ -1,7 +1,7 @@
 /**
  * @file communaute.cpp
  * @author DELARUELLE DEPEYRIS
- * @brief Définition des fonctions de la classe Communaute
+ * @brief Definition des fonctions de la classe Communaute
  * @version 0.1
  * @date 2025-01-26
  * 
@@ -11,13 +11,13 @@
 #include "communaute.hpp"
 
 /**
- * @brief Constructeur par défaut de la classe Communaute
+ * @brief Constructeur par defaut de la classe Communaute
  * 
  */
 Communaute::Communaute() : Case("Communaute") {}
 
 /**
- * @brief Tirer une carte communaute et appliquer l'action associée
+ * @brief Tirer une carte communaute et appliquer l'action associee
  * 
  * @param joueur joueur qui tire la carte
  */
@@ -31,7 +31,7 @@ void Communaute::action(Joueur* joueur){
     {
         case cartesCommunaute::PLACEZ_VOUS_CASE_DEPART:
         {
-            std::cout << "Le joueur " << joueur->getNom() << " s'avance jusqu'à la case Départ." << std::endl;
+            std::cout << "Le joueur " << joueur->getNom() << " s'avance jusqu'a la case Depart." << std::endl;
             joueur->deplacer(0);
         } break; 
         
@@ -43,13 +43,13 @@ void Communaute::action(Joueur* joueur){
 
         case cartesCommunaute::NOTE_DOCTEUR:
         {
-            std::cout << "Le joueur " << joueur->getNom() << " est tombé malade. Le docteur vous demande 50 M." << std::endl;
+            std::cout << "Le joueur " << joueur->getNom() << " est tombe malade. Le docteur vous demande 50 M." << std::endl;
             joueur->removeArgent(50);
         } break;
 
         case cartesCommunaute::VENTE_STOCK:
         {
-            std::cout << joueur->getNom() <<" a fait du ménage dans son grenier. Cela rapporte 50 M." << std::endl;
+            std::cout << joueur->getNom() <<" a fait du menage dans son grenier. Cela rapporte 50 M." << std::endl;
             joueur->addArgent(50);
         } break;
 
@@ -79,7 +79,7 @@ void Communaute::action(Joueur* joueur){
 
         case cartesCommunaute::ANNIVERSAIRE:
         {
-            std::cout << "On fête l'anniversaire de " << joueur->getNom() << ", la banque vous verse 50 M." << std::endl;
+            std::cout << "On fete l'anniversaire de " << joueur->getNom() << ", la banque vous verse 50 M." << std::endl;
             joueur->addArgent(50);
         } break;   
 
@@ -91,7 +91,7 @@ void Communaute::action(Joueur* joueur){
 
         case cartesCommunaute::INTERETS_PRET:
         {
-            std::cout << joueur->getNom() << " reçoit 25 M de l'intérêt de son emprunt." << std::endl;
+            std::cout << joueur->getNom() << " reçoit 25 M de l'interet de son emprunt." << std::endl;
             joueur->addArgent(25);
         } break;   
 
@@ -109,26 +109,26 @@ void Communaute::action(Joueur* joueur){
 
         case cartesCommunaute::RDV_GARE_LA_PLUS_PROCHE:
         {
-            std::cout << "Le joueur " << joueur->getNom() << " est aussi torché que Zak. Il cherche à rejoindre la gare la plus proche." << std::endl;
+            std::cout << "Le joueur " << joueur->getNom() << " est aussi torche que Zak. Il cherche a rejoindre la gare la plus proche." << std::endl;
             joueur->deplacer(garePlusProche(joueur->getPosition())); 
         } break;    
 
         case cartesCommunaute::PRIX_DE_BEAUTE:
         {
-            std::cout << "Le joueur " << joueur->getNom() << " a gagné le concours de beauté. Il touche 10 M." << std::endl;
+            std::cout << "Le joueur " << joueur->getNom() << " a gagne le concours de beaute. Il touche 10 M." << std::endl;
             joueur->addArgent(10);
         } break; 
 
         case cartesCommunaute::HERITAGE:
         {
-            std::cout << "Le joueur " << joueur->getNom() << " hérite de 100 M." << std::endl;
+            std::cout << "Le joueur " << joueur->getNom() << " herite de 100 M." << std::endl;
             joueur->deplacer(11);
         } break;
 
         default:
         {
-            std::cout << "Le joueur " << joueur->getNom() << " est étourdi." << std::endl;
-            throw("Carte Communaute inconnue");
+            std::cout << "Le joueur " << joueur->getNom() << " est etourdi." << std::endl;
+            std::cout <<("Carte Communaute inconnue");
         } break;
     }
 }

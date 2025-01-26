@@ -1,7 +1,7 @@
 /**
  * @file jeu.cpp
  * @author DELARUELLE DEPEYRIS
- * @brief Définition des fonctions de la classe Jeu
+ * @brief Definition des fonctions de la classe Jeu
  * @version 0.1
  * @date 2025-01-26
  * 
@@ -11,7 +11,7 @@
 #include "jeu.hpp"
 
 /**
- * @brief Constructeur par défaut de la classe Jeu
+ * @brief Constructeur par defaut de la classe Jeu
  * 
  */
 Jeu::Jeu() {
@@ -24,47 +24,65 @@ Jeu::Jeu() {
  * 
  */
 void Jeu::jouerUnTour() {
-    int des = 0;
+    int des, de1, de2 = 0;
     std::string reponse = "";
-    for (std::vector<Joueur>::iterator joueur = joueurs.begin(); joueur <= this->joueurs.end(); joueur++) {
+    for (std::vector<Joueur>::iterator joueur = joueurs.begin(); joueur < this->joueurs.end(); joueur++) {
         reponse = "";
-        des = 0;
-        std::cout << "C'est au tour de " << joueur->getNom() << std::endl;
-        des = lancerDe(1,6) + lancerDe(1,6);
-        std::cout << "Vous avancez de " << des << " cases." << std::endl;
-        joueur->deplacer(joueur->getPosition() + des);
-        std::cout << "Vous êtes sur la case " << plateau[joueur->getPosition()]->getNom() << std::endl;
-        plateau[joueur->getPosition()]->action(&(*joueur));
-        std::cout << "Vous avez " << joueur->getArgent() << "M" << std::endl;
-        std::cout << "Voulez-vous construire une maison sur un terrain ? (oui/non)" << std::endl;
-        std::cin >> reponse;
-        if (reponse == "oui") {
-            std::cout << "voici les terrains que vous possédez : " << std::endl;
-            for (int i = 0; i < joueur->getProprietes().size(); i++) {
-                if (dynamic_cast<Terrain*>(joueur->getProprietes()[i])) {
-                    std::cout << joueur->getProprietes()[i]->getNom() << std::endl;
-                    std::cout << "Nombre de maisons : " << dynamic_cast<Terrain*>(joueur->getProprietes()[i])->getMaison() << std::endl;
-                    std::cout << "Prix d'une maison : " << dynamic_cast<Terrain*>(joueur->getProprietes()[i])->getPrixMaison() << std::endl;
-                    std::cout << "Voulez-vous construire une maison sur ce terrain ? (oui/non)" << std::endl;
+        des, de1, de2 = 0;
+        do {
+            if (joueur->getCompteurDouble() == 3)
+            {
+                joueur->deplacer(10);
+                joueur->setTourPrison(0);
+                dynamic_cast<Prison*>(plateau[9])->addPrisonnier(&(*joueur));
+            }
+            std::cout << "C'est au tour de " << joueur->getNom() << std::endl;
+            de1 = lancerDe(1, 6);
+            de2 = lancerDe(1, 6);
+            std::cout << "Vous avez fait " << de1 << " et " << de2 << std::endl;
+            des = de1 + de2;
+            if (de1 == de2) {
+                joueur->setCompteurDouble(joueur->getCompteurDouble()+1);
+            }
+            std::cout << "Vous avancez de " << des << " cases." << std::endl;
+            joueur->deplacer(joueur->getPosition() + des);
+            std::cout << "Vous etes sur la case " << plateau[joueur->getPosition()]->getNom() << std::endl;
+            plateau[joueur->getPosition()]->action(&(*joueur));
+            std::cout << "Vous avez " << joueur->getArgent() << " M." << std::endl;
+            if(joueur->getProprietes().size() != 0) {
+                std::cout << "Voulez-vous construire une maison sur un terrain ? (oui/non)" << std::endl;
+                std::cin >> reponse;
+                if (reponse == "oui") {
+                    std::cout << "voici les terrains que vous possedez : " << std::endl;
+                    for (int i = 0; i < joueur->getProprietes().size(); i++) {
+                        if (dynamic_cast<Terrain*>(joueur->getProprietes()[i])) {
+                            std::cout << joueur->getProprietes()[i]->getNom() << std::endl;
+                            std::cout << "Nombre de maisons : " << dynamic_cast<Terrain*>(joueur->getProprietes()[i])->getMaison() << std::endl;
+                            std::cout << "Prix d'une maison : " << dynamic_cast<Terrain*>(joueur->getProprietes()[i])->getPrixMaison() << std::endl;
+                            std::cout << "Voulez-vous construire une maison sur ce terrain ? (oui/non)" << std::endl;
+                            std::cin >> reponse;
+                            if (reponse == "oui") {
+                                dynamic_cast<Terrain*>(joueur->getProprietes()[i])->construireMaison(this->getNbMaisonsRestantes(), this->getNbHotelsRestants());
+                            }
+                        }
+                    }
                     std::cin >> reponse;
-                    if (reponse == "oui") {
-                        dynamic_cast<Terrain*>(joueur->getProprietes()[i])->construireMaison(this->getNbMaisonsRestantes(), this->getNbHotelsRestants());
-                    }   
                 }
             }
-            std::cin >> reponse;
-        } else {
-            std::cout << "Fin du tour de " << joueur->getNom() << std::endl;
-        }
-        faillite(&(*joueur));  
+            else {
+                std::cout << "Fin du tour de " << joueur->getNom() << std::endl;
+            }
+            faillite(&(*joueur));
+        }   while (de1 == de2);     
     }
 }
 
 /**
- * @brief Défini le nombre de joueurs et leur nom
+ * @brief Defini le nombre de joueurs et leur nom
  * 
  */
 void Jeu::parametrer() {
+    initialiserPlateau();
     int nbJoueurs = 0;
     std::string nom;
     do{
@@ -100,9 +118,9 @@ void Jeu::faillite(Joueur * joueur) {
 }
 
 /**
- * @brief Enchère pour l'achat d'une propriété
+ * @brief Enchere pour l'achat d'une propriete
  * 
- * @param propriete propriété à vendre
+ * @param propriete propriete a vendre
  */
 void Jeu::enchere(Propriete * propriete) {
     int prix = 0;
@@ -110,7 +128,7 @@ void Jeu::enchere(Propriete * propriete) {
     int nbJoueurs = joueurs.size();
     int i = 0;
     while (i < nbJoueurs) {
-        std::cout << "Joueur " << this->joueurs[i].getNom() << ", faites une enchère pour " << propriete->getNom() << " : ";
+        std::cout << "Joueur " << this->joueurs[i].getNom() << ", faites une enchere pour " << propriete->getNom() << " : ";
         std::cin >> enchere;
         if (enchere > prix) {
             prix = enchere;
@@ -137,10 +155,10 @@ void Jeu::initialiserPlateau() {
     this->plateau[6] = new Terrain("Rue de Vaugirard", 100, 6, 2);
     this->plateau[7] = new Chance();
     this->plateau[8] = new Terrain("Rue de Courcelles", 100, 6, 2);
-    this->plateau[9] = new Terrain("Avenue de la République", 120, 8, 2);
+    this->plateau[9] = new Terrain("Avenue de la Republique", 120, 8, 2);
     this->plateau[10] = new Prison();
     this->plateau[11] = new Terrain("Boulevard de la Villette", 140, 10, 3);
-    this->plateau[12] = new Compagnie("Compagnie d'électricité", 150);
+    this->plateau[12] = new Compagnie("Compagnie d'electricite", 150);
     this->plateau[13] = new Terrain("Avenue de Neuilly", 140, 10, 3);
     this->plateau[14] = new Terrain("Rue de Paradis", 160, 12, 3);
     this->plateau[15] = new Gare("Gare de Lyon", 200);
@@ -154,7 +172,7 @@ void Jeu::initialiserPlateau() {
     this->plateau[23] = new Terrain("Boulevard Malesherbes", 220, 18, 5);
     this->plateau[24] = new Terrain("Avenue Henri-Martin", 240, 20, 5);
     this->plateau[25] = new Gare("Gare du Nord", 200);
-    this->plateau[26] = new Terrain("Faubourg Saint-Honoré", 260, 22, 6);
+    this->plateau[26] = new Terrain("Faubourg Saint-Honore", 260, 22, 6);
     this->plateau[27] = new Terrain("Place de la Bourse", 260, 22, 6);
     this->plateau[28] = new Compagnie("Compagnie des eaux", 150);
     this->plateau[29] = new Terrain("Rue La Fayette", 280, 24, 6);
@@ -165,7 +183,7 @@ void Jeu::initialiserPlateau() {
     this->plateau[34] = new Terrain("Boulevard des Capucines", 320, 28, 7);
     this->plateau[35] = new Gare("Gare Saint-Lazare", 200);
     this->plateau[36] = new Chance();
-    this->plateau[37] = new Terrain("Avenue des Champs-Elysées", 350, 35, 8);
+    this->plateau[37] = new Terrain("Avenue des Champs-Elysees", 350, 35, 8);
     this->plateau[38] = new TaxeDeLuxe();
     this->plateau[39] = new Terrain("Rue de la Paix", 400, 50, 8);
 }
@@ -207,7 +225,7 @@ int* Jeu::getNbMaisonsRestantes() {
 }
 
 /**
- * @brief Définir le nombre d'hotels restants
+ * @brief Definir le nombre d'hotels restants
  * 
  * @param nb nombre d'hotels restants
  */
@@ -216,7 +234,7 @@ void Jeu::setNbHotelsRestants(int nb) {
 }
 
 /**
- * @brief Définir le nombre de maisons restantes
+ * @brief Definir le nombre de maisons restantes
  * 
  * @param nb nombre de maisons restantes
  */

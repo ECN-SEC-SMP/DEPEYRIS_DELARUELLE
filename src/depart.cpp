@@ -1,7 +1,7 @@
 /**
  * @file depart.cpp
  * @author DELARUELLE DEPEYRIS
- * @brief Définition des fonctions de la classe Depart
+ * @brief Definition des fonctions de la classe Depart
  * @version 0.1
  * @date 2025-01-26
  * 
@@ -11,15 +11,15 @@
 #include "depart.hpp"
 
 /**
- * @brief Constructeur par défaut de la classe Depart
+ * @brief Constructeur par defaut de la classe Depart
  * 
  */
 Depart::Depart() : Case("Depart") {}
 
 /**
- * @brief Action réalisée si un joueur est sur la case départ
+ * @brief Action realisee si un joueur est sur la case depart
  * 
- * @param j joueur sur la case départ
+ * @param j joueur sur la case depart
  */
 void Depart::action(Joueur * j) {    
 }

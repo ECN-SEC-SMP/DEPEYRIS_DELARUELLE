@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2025
  * 
  */
-#ifndef pacGratuit_hpp
-#define pacGratuit_hpp
+#ifndef parcGratuit_hpp
+#define parcGratuit_hpp
 
 #include "case.hpp"
 #include "joueur.hpp"

@@ -1,7 +1,7 @@
 /**
  * @file terrain.cpp
  * @author DELARUELLE DEPEYRIS
- * @brief Définition des fonctions de la classe Terrain
+ * @brief Definition des fonctions de la classe Terrain
  * @version 0.1
  * @date 2025-01-26
  * 
@@ -12,19 +12,19 @@
 #include "joueur.hpp"
 
 /**
- * @brief Constructeur par défaut de la classe terrain
+ * @brief Constructeur par defaut de la classe terrain
  * 
  */
 Terrain::Terrain() : Propriete(), maison(0), prixMaison(100), idCouleur(0) {}
 
 /**
- * @brief Constructeur avec des paramètres de la classe terrain
+ * @brief Constructeur avec des parametres de la classe terrain
  * 
  * @param nom Nom de la parcelle
  * @param prix Prix de la parcelle
- * @param loyer Loyer de la parcelle (évolue avec la construction de maisons/hotel)
+ * @param loyer Loyer de la parcelle (evolue avec la construction de maisons/hotel)
  * @param maison Nombre de maisons sur la parcelle
- * @param idCouleur Nombre correspondant à la couleur du terrain et donc au prix d'achat
+ * @param idCouleur Nombre correspondant a la couleur du terrain et donc au prix d'achat
  */
 Terrain::Terrain(std::string nom, int prix, int loyer, int idCouleur) : Propriete(nom, prix), maison(0), idCouleur(idCouleur) {
     switch(idCouleur) { // Calcul du prix d'une maison en fonction du type de terrain
@@ -32,14 +32,14 @@ Terrain::Terrain(std::string nom, int prix, int loyer, int idCouleur) : Propriet
         case 3 : case 4 : this->prixMaison = 100; break; // rose / orange
         case 5 : case 6 : this->prixMaison = 150; break; // rouge / jaune
         case 7 : case 8 : this->prixMaison = 200; break; // vert / bleu
-        default : throw "Le prix d'achat d'une maison ne peut pas être défini"; break;
+        default : std::cout << "Le prix d'achat d'une maison ne peut pas etre defini"; break;
     }
 }
 
 /**
- * @brief Action à réaliser lorsqu'un joueur tombe sur une case terrain
+ * @brief Action a realiser lorsqu'un joueur tombe sur une case terrain
  * 
- * @param j Joueur qui est tombé sur la case
+ * @param j Joueur qui est tombe sur la case
  */
 void Terrain::action(Joueur * j) {
     if(this->proprietaire == nullptr) {
@@ -57,18 +57,18 @@ void Terrain::construireMaison(int * nbM, int * nbH) {
     int maisonConstruit = 0;
     int HotelConstruit = 0;
     if(this->getHypotheque()) {
-        throw "Le terrain est hypothéqué, il n'est pas possible de construire une maison";
+        std::cout << "Le terrain est hypotheque, il n'est pas possible de construire une maison" << std::endl;
     } else if(this->getProprietaire()->getArgent() < this->getPrixMaison()) {
-        throw "Le propriétaire n'a pas assez d'argent pour acheter une maison";
+        std::cout << "Le proprietaire n'a pas assez d'argent pour acheter une maison" << std::endl;
     } else if(this->getMaison() < 4 ) {
-        throw "il n'y a plus de maisons à construire";
+        std::cout << "il n'y a plus de maisons a construire" << std::endl;
         if (nbM==0){
-            throw "Il n'y a plus de maisons disponible";
+            std::cout << "Il n'y a plus de maisons disponible" << std::endl;
         }
     } else if(this->getMaison() == 4 ) {
-        throw "il n'y a plus d'hôtels à construire";
+        std::cout << "il n'y a plus d'hotels a construire" << std::endl;
         if (nbH==0){
-            throw "Il n'y a plus d'hôtels disponible";
+            std::cout << "Il n'y a plus d'hotels disponible" << std::endl;
             return;
         }
     } else {
@@ -87,7 +87,7 @@ void Terrain::construireMaison(int * nbM, int * nbH) {
  */
 void Terrain::detruireMaison() {
     if(this->getMaison() < 1) {
-        throw "Il n'y a pas de maisons construites sur ce terrain";
+        std::cout << "Il n'y a pas de maisons construites sur ce terrain" << std::endl;
     } else {
         this->setMaison(this->getMaison() - 1);
     }
@@ -133,9 +133,9 @@ void Terrain::setMaison(int nbMaisons) {
 }
 
 /**
- * @brief Calcule le loyer du terrain qui sera payé par les joueurs adverses lorsqu'ils visiteront la case
+ * @brief Calcule le loyer du terrain qui sera paye par les joueurs adverses lorsqu'ils visiteront la case
  * 
- * @return int  Le loyer calculé
+ * @return int  Le loyer calcule
  */
 int Terrain::calculLoyer() {
     // Calcul du loyer en fonction du nombre de maisons/hotel construits
@@ -146,18 +146,18 @@ int Terrain::calculLoyer() {
         case 3 : return this->loyer * 45;
         case 4 : return this->loyer * 80;
         case 5 : return this->loyer * 125;
-        default : throw "Le nombre de maisons/hotels est incorrect";
+        default : std::cout << "Le nombre de maisons/hotels est incorrect" << std::endl;
     }    
 }
 
 
 void Terrain::vente(Joueur * joueur) {
     if(this->getHypotheque()) {
-        throw "La maison est hypothéquée et ne peut pas être vendue";
+        std::cout << "La maison est hypothequee et ne peut pas etre vendue" << std::endl;
     } else if (joueur->getArgent() < this->prixAcquisition) {
-        throw "L'acheteur ne possède pas les fonds suffisants pour réaliser l'acquisition";
+        std::cout << "L'acheteur ne possede pas les fonds suffisants pour realiser l'acquisition" << std::endl;
     } else if(this->getMaison() > 0) {
-        throw "Il y a des maisons ou un hôtel sur le terrain, il ne peut pas être vendu";
+        std::cout << "Il y a des maisons ou un hotel sur le terrain, il ne peut pas etre vendu" << std::endl;
     } else {
         this->proprietaire = joueur;
     }

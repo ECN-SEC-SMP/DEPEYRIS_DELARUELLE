@@ -1,7 +1,7 @@
 /**
  * @file case.cpp
  * @author DELARUELLE DEPEYRIS
- * @brief Définition des fonctions de la classe Case
+ * @brief Definition des fonctions de la classe Case
  * @version 0.1
  * @date 2025-01-26
  * 
@@ -11,13 +11,13 @@
 #include "case.hpp"
 
 /**
- * @brief Constructeur par défaut de la classe case
+ * @brief Constructeur par defaut de la classe case
  * 
  */
-Case::Case() : nom("Case par défaut") {}
+Case::Case() : nom("Case par defaut") {}
 
 /**
- * @brief Constructeur avec un paramètre 
+ * @brief Constructeur avec un parametre 
  * 
  * @param nom nom de la case
  */

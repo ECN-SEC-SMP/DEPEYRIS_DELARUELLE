@@ -1,5 +1,6 @@
 # Ajouter les fichiers source et d'en-tête
 set(SOURCES
+    ../src/main.cpp
     ../src/arrestation.cpp
     ../src/case.cpp
     ../src/chance.cpp
@@ -10,7 +11,6 @@ set(SOURCES
     ../src/impots.cpp
     ../src/jeu.cpp
     ../src/joueur.cpp
-    ../src/main.cpp
     ../src/parcGratuit.cpp
     ../src/prison.cpp
     ../src/propriete.cpp

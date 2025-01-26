@@ -34,12 +34,14 @@ class Joueur {
         int getNbCartePrison() ;
         std::vector<Propriete*> getProprietes() ;
         int getPosition() ;
+        int getCompteurDouble();
         void setNom(std::string nom) ;
         void setArgent(int argent) ;
         void setTourPrison(int tour) ;
         void setNbCartePrison(int nb) ;
         void setProprietes(std::vector<Propriete*> proprietes) ;
         void setPosition(int position) ;
+        void setCompteurDouble(int compteur);
         
     private:
         std::string nom ;
