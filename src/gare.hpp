@@ -11,11 +11,15 @@
 #ifndef gare_hpp
 #define gare_hpp
 
+#include <iostream>
 #include "propriete.hpp"
+#include "joueur.hpp"
 
 class Gare : public Propriete {
     public:
         Gare();
+        Gare(std::string nom, int prix);
+        void action(Joueur * j) override;
         int calculLoyer() override;
 } ;
 

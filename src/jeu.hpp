@@ -15,25 +15,34 @@
 #include "terrain.hpp"
 #include "gare.hpp"
 #include "compagnie.hpp"
+#include "depart.hpp"
+#include "arrestation.hpp"
+#include "case.hpp"
+#include "taxeDeLuxe.hpp"
+#include "chance.hpp"
+#include "prison.hpp"
+#include "impots.hpp"
+#include "parcGratuit.hpp"
 
 // Autres includes
-#include "joueur.hpp"
 #include "constantes.hpp"
+#include "joueur.hpp"
 #include <vector>
+#include <iostream>
+
 
 class Jeu {
     public:
         Jeu();
         void jouer();
-        void choixNbJoueurs();
+        void parametrer();
         void enchere(Propriete * propriete);
-        Case* getPlateau();
+        Case * getPlateau();
         int getNbJoueurs();
         int getNbHotelsRestants();
         int getNbMaisonsRestantes();
         void setNbHotelsRestants(int nb);
         void setNbMaisonsRestantes(int nb);
-        void deplacementJoueur(Case* c);
     private:
         void initialiserPlateau();
         Case* plateau [NB_CASES];

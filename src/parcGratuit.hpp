@@ -12,6 +12,7 @@
 #define pacGratuit_hpp
 
 #include "case.hpp"
+#include "joueur.hpp"
 #include <iostream>
 
 class ParcGratuit : public Case {

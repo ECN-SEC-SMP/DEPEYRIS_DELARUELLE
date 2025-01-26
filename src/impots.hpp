@@ -9,10 +9,11 @@
  * 
  */
 
-#ifdef impots_hpp
 #ifndef impots_hpp
+#define impots_hpp
 
 #include "case.hpp"
+#include "joueur.hpp"
 class Impots : public Case {
     public:
         Impots();

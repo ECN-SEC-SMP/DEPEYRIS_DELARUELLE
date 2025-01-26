@@ -12,7 +12,9 @@
  #ifndef arrestation_hpp
  #define arrestation_hpp
 
- #include "case.hpp"
+#include <iostream>
+#include "case.hpp"
+#include "joueur.hpp"
  class Arrestation : public Case {
     public:
         Arrestation();

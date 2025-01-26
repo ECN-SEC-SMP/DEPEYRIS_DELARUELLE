@@ -12,11 +12,13 @@
 #ifndef chance_hpp
 #define chance_hpp
 
+
 #include <stdio.h>
 #include "joueur.hpp"
 #include "constantes.hpp"
-#include "jeu.hpp"
 #include "case.hpp"
+#include "utilitaire.hpp"
+
 class Chance : public Case {
     public:
         Chance();

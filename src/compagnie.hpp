@@ -11,13 +11,19 @@
 #ifndef servicePublic_hpp
 #define servicePublic_hpp
 
+#include <iostream>
 #include "propriete.hpp"
+#include "joueur.hpp"
+#include "utilitaire.hpp"
 
 class Compagnie : public Propriete {
     public:
         Compagnie();
-        int calculLoyer(int des);
+        Compagnie(std::string nom, int prix);
+        void action(Joueur * j) override;
+        int calculLoyer() override;
     private:
+        int des;
 } ;
 
 #endif

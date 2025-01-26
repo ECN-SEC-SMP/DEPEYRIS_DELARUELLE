@@ -12,6 +12,7 @@
 #define taxeDeLuxe_hpp
 
 #include "case.hpp"
+#include "joueur.hpp"
 
 class TaxeDeLuxe : public Case {
     public:

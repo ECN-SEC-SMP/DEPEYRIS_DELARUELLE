@@ -12,7 +12,9 @@
 #ifndef depart_hpp
 #define depart_hpp
 
+#include <iostream>
 #include "case.hpp"
+#include "joueur.hpp"
 class Depart : public Case {
     public:
         Depart();

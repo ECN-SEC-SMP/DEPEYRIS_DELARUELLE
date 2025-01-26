@@ -13,27 +13,41 @@
 
 #include <string>
 #include <iostream>
+#include <vector>
+#include "propriete.hpp"
+#include "terrain.hpp"
 
 class Joueur {
     public:
-        Joueur();
-        Joueur(std::string nom, int argent);
-        std::string getNom();
-        int getArgent();
-        int getTourPrison();
-        int getNbCartePrison();
-        void setNom(std::string nom);
-        void setArgent(int argent);
-        void setTourPrison(int tour);
-        void setNbCartePrison(int nb);
-        void addArgent(int argent);
-        void removeArgent(int argent);
+        Joueur() ;
+        Joueur(std::string nom, int argent) ;
+        void addArgent(int argent) ;
+        void removeArgent(int argent) ;
+        void addPropriete(Propriete * propriete) ;
+        void removePropriete(Propriete * propriete) ;
+        void deplacer(int numCase) ;
+        std::vector<int> nbMaisonHotel();
+        std::string getNom() ;
+        int getArgent() ;
+        int getTourPrison() ;
+        int getNbCartePrison() ;
+        std::vector<Propriete*> getProprietes() ;
+        int getPosition() ;
+        void setNom(std::string nom) ;
+        void setArgent(int argent) ;
+        void setTourPrison(int tour) ;
+        void setNbCartePrison(int nb) ;
+        void setProprietes(std::vector<Propriete*> proprietes) ;
+        void setPosition(int position) ;
+        
     private:
-        std::string nom;
-        int portefeuille;
-        int nbCartePrison;
-        int tourPrison;
-        int compteurDouble;
+        std::string nom ;
+        int portefeuille ;
+        int nbCartePrison ;
+        int tourPrison ;
+        int compteurDouble ;
+        int position ;
+        std::vector<Propriete*> proprietes ;
 } ;
 
 #endif

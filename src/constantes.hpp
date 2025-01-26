@@ -14,6 +14,8 @@
 #define NB_JOUEURS_MIN 2
 #define NB_HOTELS 12
 #define NB_MAISONS 32
+#define AMANDE_PRISON 50
+#define MAX_TOUR_PRISON 3
 
 enum class cartesChance {
     AVANCER_CASE_DEPART,
@@ -47,7 +49,7 @@ enum class cartesCommunaute {
     CONTRIBUTIONS_REMBOURSENT,
     INTERETS_PRET,
     POLICE_ASSURANCE,
-    AMANDE_OU_CARTE_CHANCE,
+    AMENDE_OU_CARTE_CHANCE,
     RDV_GARE_LA_PLUS_PROCHE,
     PRIX_DE_BEAUTE,
     HERITAGE

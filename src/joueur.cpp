@@ -23,7 +23,7 @@
  * @brief Construct a new Joueur:: Joueur object
  * 
  */
-Joueur::Joueur() : nom("Joueur"), portefeuille(1500), nbCartePrison(0), tourPrison(0) {}
+Joueur::Joueur() : nom("Joueur"), portefeuille(1500), nbCartePrison(0), tourPrison(0), proprietes(0) {}
 
 /**
  * @brief Construct a new Joueur:: Joueur object
@@ -32,7 +32,94 @@ Joueur::Joueur() : nom("Joueur"), portefeuille(1500), nbCartePrison(0), tourPris
  * @param argent 
  * @param position 
  */
-Joueur::Joueur(std::string nom, int argent) : nom(nom), portefeuille(argent), nbCartePrison(0), tourPrison(0) {}
+Joueur::Joueur(std::string nom, int argent) : nom(nom), portefeuille(argent), nbCartePrison(0), tourPrison(0), proprietes(0) {}
+
+
+/**
+ * @brief Ajouter une propriété à la liste des propriétés du joueur
+ * 
+ * @param propriete 
+ */
+void Joueur::addPropriete(Propriete * propriete) {
+    this->proprietes.push_back(propriete);
+}
+
+/**
+ * @brief Retirer une propriété de la liste des propriétés du joueur
+ * 
+ * @param propriete 
+ */
+void Joueur::removePropriete(Propriete * propriete) {
+    for (int i = 0; i < this->proprietes.size(); i++) {
+        if (this->proprietes[i] == propriete) {
+            this->proprietes.erase(this->proprietes.begin() + i);
+        }
+    }
+}
+
+/**
+ * @brief Déplacer le joueur sur une nouvelle case
+ * 
+ * @param numCase 
+ */
+void Joueur::deplacer(int numCase) {
+    if (((getPosition()+numCase)%40 < getPosition()) && this->getTourPrison() == -1) {
+        this->addArgent(200);
+        std::cout << this->getNom() << " passe par la case départ. Il reçoit 200 M." << std::endl ;
+    }    
+    this->position = (getPosition()+numCase)%40;
+}
+
+/** 
+ * @brief Compte le nombre de maisons et d'hotels possédés par le joueur
+ * 
+ * @param 
+ */
+std::vector<int> Joueur::nbMaisonHotel(){
+    int nbMaison = 0 ;
+    int nbHotel = 0 ;
+    for (auto it = proprietes.begin(); it != proprietes.end(); ++it) {
+        if (dynamic_cast<Terrain*>(*it)) {
+            int batimentsConsrtuits = dynamic_cast<Terrain*>(*it)->getMaison() ;
+            if (batimentsConsrtuits > 0 && batimentsConsrtuits < 6){
+                if(batimentsConsrtuits==5) {
+                    nbHotel++ ;
+                } else {
+                    nbMaison+=batimentsConsrtuits ;
+                }
+            } else {
+                std::cout << "Nombre de maisons/hotels illogique (supérieur à 5)" << std::endl ;
+            }
+        }
+    }
+    std::vector<int> nbBatiments;
+    nbBatiments.push_back(nbMaison);
+    nbBatiments.push_back(nbHotel);
+    return nbBatiments;
+}
+
+/**
+ * @brief Ajouter de l'argent au portefeuille du joueur
+ * 
+ * @param argent 
+ */
+void Joueur::addArgent(int argent) {
+    this->portefeuille += argent;
+}
+
+/**
+ * @brief Retirer de l'argent du portefeuille du joueur
+ * 
+ * @param argent 
+ */
+void Joueur::removeArgent(int argent) {
+   
+    if (argent > this->portefeuille) {
+        throw "Pas assez d'argent";
+    } else {
+        this->portefeuille -= argent;
+    }  
+}
 
 /**
  * @brief Obtenir le nom du joueur
@@ -68,6 +155,24 @@ int Joueur::getTourPrison() {
  */
 int Joueur::getNbCartePrison() {
     return nbCartePrison;
+}
+
+/**
+ * @brief Obtenir la liste des propriétés du joueur
+ * 
+ * @return std::vector<Propriete*> 
+ */
+std::vector<Propriete*> Joueur::getProprietes() {
+    return proprietes;
+}
+
+/**
+ * @brief Obtenir la position du joueur
+ * 
+ * @return int 
+ */
+int Joueur::getPosition() {
+    return position;
 }
 
 /**
@@ -107,26 +212,21 @@ void Joueur::setNbCartePrison(int nb) {
 }
 
 /**
- * @brief Ajouter de l'argent au portefeuille du joueur
+ * @brief Initialiser la liste des propriétés du joueur
  * 
- * @param argent 
+ * @param proprietes 
  */
-void Joueur::addArgent(int argent) {
-    this->portefeuille += argent;
+void Joueur::setProprietes(std::vector<Propriete*> proprietes) {
+    this->proprietes = proprietes;
 }
 
 /**
- * @brief Retirer de l'argent du portefeuille du joueur
+ * @brief Initialiser la position du joueur
  * 
- * @param argent 
+ * @param position 
  */
-void Joueur::removeArgent(int argent) {
-   
-    if (argent > this->portefeuille) {
-        throw "Pas assez d'argent";
-    } else {
-        this->portefeuille -= argent;
-    }  
+void Joueur::setPosition(int position) {
+    this->position = position;
 }
 
-void Joueur::
+

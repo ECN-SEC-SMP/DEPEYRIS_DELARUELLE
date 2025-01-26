@@ -9,10 +9,15 @@
  * 
  */
 
-#ifdef communaute_hpp
 #ifndef communaute_hpp
+#define communaute_hpp
 
+#include <stdio.h>
+#include "joueur.hpp"
+#include "constantes.hpp"
 #include "case.hpp"
+#include "utilitaire.hpp"
+
 class Communaute : public Case {
     public:
         Communaute();

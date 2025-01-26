@@ -12,7 +12,8 @@
 #define case_hpp
 
 #include <string>
-#include "joueur.hpp"
+
+class Joueur;
 
 class Case {
     public:

@@ -13,7 +13,12 @@
 
 #include "case.hpp"
 #include "joueur.hpp"
+#include "constantes.hpp"
+#include "utilitaire.hpp"
+#include "jeu.hpp"
 #include <vector>
+#include <algorithm>
+#include <iostream>
 
 class Prison : public Case {
     public:
@@ -21,17 +26,10 @@ class Prison : public Case {
         void action(Joueur* j);
         void addPrisonnier(Joueur * j);
         void removePrisonnier(Joueur * j);
-        std::vector<Joueur>* getPrisonnier();
-        void setPrisonnier(std::vector<Joueur>* prisionniers);
+        std::vector<Joueur*> getPrisonnier();
+        void setPrisonnier(std::vector<Joueur*> prisionniers);
     private:
-        std::vector<Joueur>* prisonniers;
-        enum states {
-            TEST_TOUR,
-            TEST_CARTE_LIBERATION,
-            LANCER_DE,
-            PAYER_POUR_SORTIR,
-            SORTIR
-        }
+        std::vector<Joueur*> prisonniers;
 } ;
 
 #endif

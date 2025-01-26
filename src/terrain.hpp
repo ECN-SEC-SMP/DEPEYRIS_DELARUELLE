@@ -12,11 +12,13 @@
 #define terrain_hpp
 
 #include "propriete.hpp"
+#include "joueur.hpp"
 
 class Terrain : public Propriete {
     public:
         Terrain();
-        Terrain(std::string nom, int prix, int loyer, int maison, int idCouleur);
+        Terrain(std::string nom, int prix, int loyer, int idCouleur);
+        void action(Joueur * j) override;
         void construireMaison();
         void detruireMaison();
         int getMaison();

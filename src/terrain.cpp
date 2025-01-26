@@ -25,7 +25,7 @@ Terrain::Terrain() : Propriete(), maison(0), prixMaison(100), idCouleur(0) {}
  * @param maison Nombre de maisons sur la parcelle
  * @param idCouleur Nombre correspondant à la couleur du terrain et donc au prix d'achat
  */
-Terrain::Terrain(std::string nom, int prix, int loyer, int maison, int idCouleur) : Propriete(nom, prix), maison(0), idCouleur(idCouleur) {
+Terrain::Terrain(std::string nom, int prix, int loyer, int idCouleur) : Propriete(nom, prix), maison(0), idCouleur(idCouleur) {
     switch(idCouleur) { // Calcul du prix d'une maison en fonction du type de terrain
         case 1 : case 2 : this->prixMaison = 50; break; // violet / ciel
         case 3 : case 4 : this->prixMaison = 100; break; // rose / orange
@@ -119,7 +119,7 @@ void Terrain::vente(Joueur * joueur) {
     } else if (joueur->getArgent() < this->prixAcquisition) {
         throw "L'acheteur ne possède pas les fonds suffisants pour réaliser l'acquisition";
     } else if(this->getMaison() > 0) {
-        throw "Il y a des maisons ou un hôtel sur le terrain";
+        throw "Il y a des maisons ou un hôtel sur le terrain, il ne peut pas être vendu";
     } else {
         this->proprietaire = joueur;
     }

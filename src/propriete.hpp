@@ -13,6 +13,9 @@
 
 #include "case.hpp"
 
+class Joueur;
+class Case;
+
 class Propriete : public Case {
     public:
         Propriete();
@@ -21,6 +24,7 @@ class Propriete : public Case {
         virtual int calculLoyer() = 0;
         void payerLoyer(Joueur * joueur);
         virtual void vente(Joueur * joueur);
+        void hypothequer();
         Joueur * getProprietaire();
         int getPrixAcquisition();
         int getLoyer();

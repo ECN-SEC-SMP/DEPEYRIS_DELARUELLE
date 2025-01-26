@@ -13,6 +13,6 @@
 
 #include <random>
 
-int lancerDe();
+int lancerDe(uint16_t borneInf, uint16_t borneSup);
 
 #endif
