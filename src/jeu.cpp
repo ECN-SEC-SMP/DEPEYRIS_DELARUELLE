@@ -34,7 +34,7 @@ void Jeu::jouerUnTour() {
             {
                 joueur->deplacer(10);
                 joueur->setTourPrison(0);
-                dynamic_cast<Prison*>(plateau[9])->addPrisonnier(&(*joueur));
+                dynamic_cast<Prison*>(plateau[10])->addPrisonnier(&(*joueur));
             }
             std::cout << "C'est au tour de " << joueur->getNom() << std::endl;
             de1 = lancerDe(1, 6);
@@ -45,7 +45,7 @@ void Jeu::jouerUnTour() {
                 joueur->setCompteurDouble(joueur->getCompteurDouble()+1);
             }
             std::cout << "Vous avancez de " << des << " cases." << std::endl;
-            joueur->deplacer(joueur->getPosition() + des);
+            joueur->deplacer((joueur->getPosition() + des)%40);
             std::cout << "Vous etes sur la case " << plateau[joueur->getPosition()]->getNom() << std::endl;
             plateau[joueur->getPosition()]->action(&(*joueur));
             std::cout << "Vous avez " << joueur->getArgent() << " M." << std::endl;
@@ -66,7 +66,6 @@ void Jeu::jouerUnTour() {
                             }
                         }
                     }
-                    std::cin >> reponse;
                 }
             }
             else {
@@ -148,7 +147,7 @@ void Jeu::enchere(Propriete * propriete) {
 void Jeu::initialiserPlateau() {
     this->plateau[0] = new Depart();
     this->plateau[1] = new Terrain("Boulevard de Belleville", 60, 2, 1);
-    this->plateau[2] = new Chance();
+    this->plateau[2] = new Communaute();
     this->plateau[3] = new Terrain("Rue Lecourbe", 60, 4, 1);
     this->plateau[4] = new Impots();
     this->plateau[5] = new Gare("Gare Montparnasse", 200);
@@ -163,7 +162,7 @@ void Jeu::initialiserPlateau() {
     this->plateau[14] = new Terrain("Rue de Paradis", 160, 12, 3);
     this->plateau[15] = new Gare("Gare de Lyon", 200);
     this->plateau[16] = new Terrain("Avenue Mozart", 180, 14, 4);
-    this->plateau[17] = new Chance();
+    this->plateau[17] = new Communaute();
     this->plateau[18] = new Terrain("Boulevard Saint-Michel", 180, 14, 4);
     this->plateau[19] = new Terrain("Place Pigalle", 200, 16, 4);
     this->plateau[20] = new ParcGratuit();
@@ -179,7 +178,7 @@ void Jeu::initialiserPlateau() {
     this->plateau[30] = new Arrestation();
     this->plateau[31] = new Terrain("Avenue de Breteuil", 300, 26, 7);
     this->plateau[32] = new Terrain("Avenue Foch", 300, 26, 7);
-    this->plateau[33] = new Chance();
+    this->plateau[33] = new Communaute();
     this->plateau[34] = new Terrain("Boulevard des Capucines", 320, 28, 7);
     this->plateau[35] = new Gare("Gare Saint-Lazare", 200);
     this->plateau[36] = new Chance();

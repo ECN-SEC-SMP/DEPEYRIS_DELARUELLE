@@ -23,9 +23,7 @@ Communaute::Communaute() : Case("Communaute") {}
  */
 void Communaute::action(Joueur* joueur){
 
-    int randomNumber = 0;
-    lancerDe(0,15);
-    cartesCommunaute carteRandom = static_cast<cartesCommunaute>(randomNumber);
+    cartesCommunaute carteRandom = static_cast<cartesCommunaute>(lancerDe(0,15));
 
     switch (carteRandom)
     {

@@ -18,7 +18,7 @@ TEST(Joueur, constructeur_defaut) {
     Joueur joueur;
     EXPECT_EQ(joueur.getNom(), "Joueur");
     EXPECT_EQ(joueur.getArgent(), 1500);
-    EXPECT_EQ(joueur.getTourPrison(), 0);
+    EXPECT_EQ(joueur.getTourPrison(), -1);
     EXPECT_EQ(joueur.getNbCartePrison(), 0);
     EXPECT_EQ(joueur.getProprietes().size(), 0);
     EXPECT_EQ(joueur.getPosition(), 0);

@@ -23,6 +23,7 @@
 #include "prison.hpp"
 #include "impots.hpp"
 #include "parcGratuit.hpp"
+#include "communaute.hpp"
 
 // Autres includes
 #include "constantes.hpp"
