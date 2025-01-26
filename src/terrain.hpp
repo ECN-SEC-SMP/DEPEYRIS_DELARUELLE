@@ -1,7 +1,7 @@
 /**
  * @file terrain.hpp
  * @author DELARUELLE DEPEYRIS
- * @brief Description de la classe terrain
+ * @brief Description de la classe Terrain
  * @version 0.1
  * @date 2025-01-17
  * 
@@ -12,14 +12,13 @@
 #define terrain_hpp
 
 #include "propriete.hpp"
-#include "joueur.hpp"
 
 class Terrain : public Propriete {
     public:
         Terrain();
         Terrain(std::string nom, int prix, int loyer, int idCouleur);
         void action(Joueur * j) override;
-        void construireMaison();
+        void construireMaison(int * nbM, int * nbH);
         void detruireMaison();
         int getMaison();
         int getPrixMaison();

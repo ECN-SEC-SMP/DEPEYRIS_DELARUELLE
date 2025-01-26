@@ -1,7 +1,7 @@
 /**
- * @file servicePublic.hpp
+ * @file compagnie.hpp
  * @author DELARUELLE DEPEYRIS
- * @brief Description de la classe servicePublic
+ * @brief Description de la classe Compagnie
  * @version 0.1
  * @date 2025-01-17
  * 
@@ -13,7 +13,6 @@
 
 #include <iostream>
 #include "propriete.hpp"
-#include "joueur.hpp"
 #include "utilitaire.hpp"
 
 class Compagnie : public Propriete {

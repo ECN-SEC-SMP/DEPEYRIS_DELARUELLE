@@ -13,7 +13,6 @@
 
 #include <iostream>
 #include "propriete.hpp"
-#include "joueur.hpp"
 
 class Gare : public Propriete {
     public:

@@ -9,6 +9,9 @@
  * 
  */
 
+#ifndef constantes_hpp
+#define constantes_hpp
+
 #define NB_CASES 40
 #define NB_JOUEURS_MAX 8
 #define NB_JOUEURS_MIN 2
@@ -54,3 +57,5 @@ enum class cartesCommunaute {
     PRIX_DE_BEAUTE,
     HERITAGE
 } ;
+
+#endif

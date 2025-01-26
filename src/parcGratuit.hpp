@@ -1,7 +1,7 @@
 /**
  * @file parcGratuit.hpp
  * @author DELARUELLE DEPEYRIS
- * @brief Description de la classe parcGratuit
+ * @brief Description de la classe ParcGratuit
  * @version 0.1
  * @date 2025-01-20
  * 

@@ -1,3 +1,13 @@
+/**
+ * @file utilitaire.cpp
+ * @author DELARUELLE DEPEYRIS
+ * @brief Définition des fonctions utilitaires du jeu
+ * @version 0.1
+ * @date 2025-01-26
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "utilitaire.hpp"
 
 /**

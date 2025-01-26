@@ -1,7 +1,7 @@
 /**
  * @file propriete.hpp
  * @author DELARUELLE DEPEYRIS
- * @brief Description de la classe propriete
+ * @brief Description de la classe Propriete
  * @version 0.1
  * @date 2025-01-17
  * 
@@ -13,14 +13,15 @@
 
 #include "case.hpp"
 
-class Joueur;
-class Case;
+class Joueur ;
 
 class Propriete : public Case {
     public:
         Propriete();
         Propriete(std::string nom, int prixAcquisition);
         Propriete(std::string nom, int prixAcquisition, int loyer);
+        void enchere();
+        void acheter(Joueur * joueur);
         virtual int calculLoyer() = 0;
         void payerLoyer(Joueur * joueur);
         virtual void vente(Joueur * joueur);

@@ -3,7 +3,7 @@
  * @author DELARUELLE DEPEYRIS
  * @brief Description de la classe Communaute
  * @version 0.1
- * @date 2025-01-20
+ * @date 2025-01-26
  * 
  * @copyright Copyright (c) 2025
  * 
@@ -22,6 +22,7 @@ class Communaute : public Case {
     public:
         Communaute();
         void action(Joueur* j);
+        int garePlusProche(int position);
     private:
 } ;
 

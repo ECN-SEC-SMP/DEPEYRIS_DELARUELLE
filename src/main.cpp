@@ -9,9 +9,12 @@
  * 
  */
 
-#include <iostream>
+#include "jeu.hpp"
 
 int main () {
-    std::cout << "Helllo world" << std::endl;
-    return 0;
+    Jeu jeu;
+    jeu.parametrer();
+    do {
+        jeu.jouerUnTour();
+    } while (1);
 }

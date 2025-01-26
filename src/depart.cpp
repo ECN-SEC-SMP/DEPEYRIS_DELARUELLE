@@ -1,3 +1,13 @@
+/**
+ * @file depart.cpp
+ * @author DELARUELLE DEPEYRIS
+ * @brief Définition des fonctions de la classe Depart
+ * @version 0.1
+ * @date 2025-01-26
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "depart.hpp"
 
 /**
@@ -11,8 +21,6 @@ Depart::Depart() : Case("Depart") {}
  * 
  * @param j joueur sur la case départ
  */
-void Depart::action(Joueur * j) {
-    j->addArgent(200) ; // Le joueur reçoit 200€
-    
+void Depart::action(Joueur * j) {    
 }
 

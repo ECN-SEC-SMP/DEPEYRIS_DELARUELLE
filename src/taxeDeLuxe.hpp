@@ -1,7 +1,7 @@
 /**
  * @file taxeDeLuxe.hpp
  * @author DELARUELLE DEPEYRIS
- * @brief Description de la classe taxeDeLuxe
+ * @brief Description de la classe TaxeDeLuxe
  * @version 0.1
  * @date 2025-01-20
  * 

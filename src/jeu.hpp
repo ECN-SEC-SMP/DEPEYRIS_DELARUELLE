@@ -27,6 +27,7 @@
 // Autres includes
 #include "constantes.hpp"
 #include "joueur.hpp"
+#include "utilitaire.hpp"
 #include <vector>
 #include <iostream>
 
@@ -34,13 +35,15 @@
 class Jeu {
     public:
         Jeu();
-        void jouer();
+        void jouerUnTour();
         void parametrer();
+        void faillite(Joueur * joueur);
+        void acheterPropriete(Propriete * propriete);
         void enchere(Propriete * propriete);
         Case * getPlateau();
         int getNbJoueurs();
-        int getNbHotelsRestants();
-        int getNbMaisonsRestantes();
+        int* getNbHotelsRestants();
+        int* getNbMaisonsRestantes();
         void setNbHotelsRestants(int nb);
         void setNbMaisonsRestantes(int nb);
     private:

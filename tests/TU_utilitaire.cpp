@@ -10,7 +10,7 @@
  */
 
 #include "gtest/gtest.h"
-#include "utilitaire.hpp"
+#include "../src/utilitaire.hpp"
 
 // test de la méthode lancerDe
 TEST(Jeu, lancerDe) {

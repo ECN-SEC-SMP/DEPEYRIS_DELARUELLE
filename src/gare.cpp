@@ -1,4 +1,15 @@
+/**
+ * @file gare.cpp
+ * @author DELARUELLE DEPEYRIS
+ * @brief Définition des fonctions de la classe Gare
+ * @version 0.1
+ * @date 2025-01-26
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "gare.hpp"
+#include "joueur.hpp"
 
 /**
  * @brief Constructeur par défaut de la classe Gare
@@ -20,7 +31,9 @@ Gare::Gare(std::string nom, int prix) : Propriete(nom, prix) {}
  * @param j joueur sur la case gare
  */
 void Gare::action(Joueur *j) {
-    if (this->getProprietaire() != j) { // Si la gare a un propriétaire différent du joueur
+    if (this->getProprietaire() == nullptr) { // Si la gare n'a pas de propriétaire
+        this->acheter(j); // Le joueur peut l'acheter
+    } else if (this->getProprietaire() != j) { // Si la gare a un propriétaire différent du joueur
         int loyer = this->calculLoyer(); // On calcule le loyer à payer
         j->removeArgent(loyer); // Le joueur paie le loyer
         this->getProprietaire()->addArgent(loyer); // Le propriétaire reçoit le loyer

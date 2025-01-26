@@ -1,20 +1,21 @@
 /**
  * @file propriete.cpp
  * @author DELARUELLE DEPEYRIS
- * @brief Définition de la classe propriete
+ * @brief Définition des fonctions de la classe Propriete
  * @version 0.1
- * @date 2025-01-20
+ * @date 2025-01-26
  * 
  * @copyright Copyright (c) 2025
  * 
  */
 #include "propriete.hpp"
+#include "joueur.hpp"
 
 /**
  * @brief Cosntructeur par défaut de la classe Propriete
  * 
  */
-Propriete::Propriete() : Case(), proprietaire(nullptr), prixAcquisition(1000), loyer(100), hypotheque(false) {}
+Propriete::Propriete() : Case(), proprietaire(nullptr), prixAcquisition(1000), loyer(0), hypotheque(false) {}
 
 /**
  * @brief Constructeur de la classe Propriete avec les paramètres
@@ -23,7 +24,29 @@ Propriete::Propriete() : Case(), proprietaire(nullptr), prixAcquisition(1000), l
  * @param prixAcquisition prix de vente de la case
  * @param loyer loyer de la case 
  */
-Propriete::Propriete(std::string nom, int prixAcquisition, int loyer) : Case(nom), proprietaire(nullptr), prixAcquisition(prixAcquisition), loyer(loyer), hypotheque(false) {}
+Propriete::Propriete(std::string nom, int prixAcquisition) : Case(nom), proprietaire(nullptr), prixAcquisition(prixAcquisition), loyer(0), hypotheque(false) {}
+
+/**
+ * @brief Permet d'acheter une propriété
+ * 
+ * @param joueur 
+ */
+void Propriete::acheter(Joueur * joueur) {
+    std::string reponse = "";
+    if(joueur->getArgent() < this->prixAcquisition) {
+        throw "Le joueur n'a pas assez d'argent pour acheter la propriété";
+    } else {
+        std::cout << "Voulez-vous acheter " << this->getNom() << " pour " << this->prixAcquisition << " ? (oui/non)" << std::endl;
+        std::cin >> reponse;
+        if(reponse == "oui") {
+            joueur->removeArgent(this->prixAcquisition);
+            this->proprietaire = joueur;
+            joueur->addPropriete(this);
+        } else {
+            throw "Le joueur n'a pas acheté la propriété";
+        }
+    }
+}
 
 /**
  * @brief Permet de payer le loyer lorsqu'un joueur tomber sur une propriété
@@ -34,6 +57,7 @@ void Propriete::payerLoyer(Joueur * joueur) {
     if(joueur->getArgent() < this->loyer) {
         throw "Le joueur n'a pas assez d'argent pour payer" ;
     } else {
+        std::cout << joueur->getNom() << " doit payer " << this->loyer << " à " << this->proprietaire->getNom() << "." << std::endl;
         this->proprietaire->addArgent(loyer);
         joueur->removeArgent(loyer);
     }

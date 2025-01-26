@@ -1,3 +1,13 @@
+/**
+ * @file case.cpp
+ * @author DELARUELLE DEPEYRIS
+ * @brief Définition des fonctions de la classe Case
+ * @version 0.1
+ * @date 2025-01-26
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "case.hpp"
 
 /**

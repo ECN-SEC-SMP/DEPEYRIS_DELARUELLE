@@ -1,7 +1,7 @@
 /**
  * @file Case.hpp
  * @author DELARUELLE DEPEYRIS
- * @brief Description de la classe case
+ * @brief Description de la classe Case
  * @version 0.1
  * @date 2025-01-17
  * 

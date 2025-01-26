@@ -22,7 +22,7 @@
 class Chance : public Case {
     public:
         Chance();
-        void action(Joueur* j);
+        void action(Joueur* j) override;
     private:
 } ;
 

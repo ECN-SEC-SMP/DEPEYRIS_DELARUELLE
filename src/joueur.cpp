@@ -1,7 +1,7 @@
 /**
  * @file joueur.cpp
  * @author DELARUELLE DEPEYRIS
- * @brief Déclaration de la classe Joueur
+ * @brief Définition des fonctions de la classe Joueur
  * @version 0.1
  * @date 2025-01-20
  * 
@@ -14,6 +14,8 @@
 // -------------------------------------------------------------------------- //
 
 #include "joueur.hpp"
+#include "propriete.hpp"
+#include "terrain.hpp"
 
 // -------------------------------------------------------------------------- //
 // ------------------------------- Méthodes --------------------------------- //
@@ -23,16 +25,15 @@
  * @brief Construct a new Joueur:: Joueur object
  * 
  */
-Joueur::Joueur() : nom("Joueur"), portefeuille(1500), nbCartePrison(0), tourPrison(0), proprietes(0) {}
+Joueur::Joueur() : nom("Joueur"), portefeuille(1500), nbCartePrison(0), tourPrison(0), proprietes(0), position(0) {}
 
 /**
  * @brief Construct a new Joueur:: Joueur object
  * 
  * @param nom 
  * @param argent 
- * @param position 
  */
-Joueur::Joueur(std::string nom, int argent) : nom(nom), portefeuille(argent), nbCartePrison(0), tourPrison(0), proprietes(0) {}
+Joueur::Joueur(std::string nom, int argent) : nom(nom), portefeuille(argent), nbCartePrison(0), tourPrison(0), proprietes(0), position(0) {}
 
 
 /**
@@ -63,11 +64,11 @@ void Joueur::removePropriete(Propriete * propriete) {
  * @param numCase 
  */
 void Joueur::deplacer(int numCase) {
-    if (((getPosition()+numCase)%40 < getPosition()) && this->getTourPrison() == -1) {
+    if ((numCase < this->getPosition()) && this->getTourPrison() == -1) {
         this->addArgent(200);
         std::cout << this->getNom() << " passe par la case départ. Il reçoit 200 M." << std::endl ;
-    }    
-    this->position = (getPosition()+numCase)%40;
+    }
+    this->position = numCase;
 }
 
 /** 
@@ -80,15 +81,15 @@ std::vector<int> Joueur::nbMaisonHotel(){
     int nbHotel = 0 ;
     for (auto it = proprietes.begin(); it != proprietes.end(); ++it) {
         if (dynamic_cast<Terrain*>(*it)) {
-            int batimentsConsrtuits = dynamic_cast<Terrain*>(*it)->getMaison() ;
-            if (batimentsConsrtuits > 0 && batimentsConsrtuits < 6){
-                if(batimentsConsrtuits==5) {
+            int batimentsConstruits = dynamic_cast<Terrain*>(*it)->getMaison() ;
+            if (batimentsConstruits > 0 && batimentsConstruits < 6){
+                if(batimentsConstruits==5) {
                     nbHotel++ ;
                 } else {
-                    nbMaison+=batimentsConsrtuits ;
+                    nbMaison+=batimentsConstruits ;
                 }
             } else {
-                std::cout << "Nombre de maisons/hotels illogique (supérieur à 5)" << std::endl ;
+                std::cout << "Il n' y a pas de maison / hotel construit" << std::endl ;
             }
         }
     }

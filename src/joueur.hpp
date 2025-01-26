@@ -14,8 +14,9 @@
 #include <string>
 #include <iostream>
 #include <vector>
-#include "propriete.hpp"
-#include "terrain.hpp"
+
+class Terrain ;
+class Propriete ;
 
 class Joueur {
     public:
@@ -26,7 +27,7 @@ class Joueur {
         void addPropriete(Propriete * propriete) ;
         void removePropriete(Propriete * propriete) ;
         void deplacer(int numCase) ;
-        std::vector<int> nbMaisonHotel();
+        std::vector<int> nbMaisonHotel() ;
         std::string getNom() ;
         int getArgent() ;
         int getTourPrison() ;

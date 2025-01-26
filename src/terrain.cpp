@@ -1,14 +1,15 @@
 /**
  * @file terrain.cpp
  * @author DELARUELLE DEPEYRIS
- * @brief Déclaration de la classe terrain
+ * @brief Définition des fonctions de la classe Terrain
  * @version 0.1
- * @date 2025-01-20
+ * @date 2025-01-26
  * 
  * @copyright Copyright (c) 2025
  * 
  */
 #include "terrain.hpp"
+#include "joueur.hpp"
 
 /**
  * @brief Constructeur par défaut de la classe terrain
@@ -34,21 +35,49 @@ Terrain::Terrain(std::string nom, int prix, int loyer, int idCouleur) : Propriet
         default : throw "Le prix d'achat d'une maison ne peut pas être défini"; break;
     }
 }
+
+/**
+ * @brief Action à réaliser lorsqu'un joueur tombe sur une case terrain
+ * 
+ * @param j Joueur qui est tombé sur la case
+ */
+void Terrain::action(Joueur * j) {
+    if(this->proprietaire == nullptr) {
+        this->acheter(j);
+    } else if(this->proprietaire != j) {
+        this->payerLoyer(j);
+    }
+}
+
 /**
  * @brief Consctruction d'une maison sur un terrain
  * 
  */
-void Terrain::construireMaison() {
+void Terrain::construireMaison(int * nbM, int * nbH) {
+    int maisonConstruit = 0;
+    int HotelConstruit = 0;
     if(this->getHypotheque()) {
         throw "Le terrain est hypothéqué, il n'est pas possible de construire une maison";
     } else if(this->getProprietaire()->getArgent() < this->getPrixMaison()) {
         throw "Le propriétaire n'a pas assez d'argent pour acheter une maison";
-    } else if(this->getMaison() < 4 /*Manque du code pour vérifier le nombre de maisons global*/) {
+    } else if(this->getMaison() < 4 ) {
         throw "il n'y a plus de maisons à construire";
-    } else if(this->getMaison() == 4 /*Manque du code pour vérifier le nombre d'hotels global*/) {
+        if (nbM==0){
+            throw "Il n'y a plus de maisons disponible";
+        }
+    } else if(this->getMaison() == 4 ) {
         throw "il n'y a plus d'hôtels à construire";
+        if (nbH==0){
+            throw "Il n'y a plus d'hôtels disponible";
+            return;
+        }
     } else {
-        this->setMaison(this->getMaison() + 1);
+        this->setMaison(this->getMaison() + 1); // update le nombre global
+        if (this->getMaison()==5){
+            nbH--;
+        } else {
+            nbM --;
+        }
     }
 }
 
@@ -109,7 +138,16 @@ void Terrain::setMaison(int nbMaisons) {
  * @return int  Le loyer calculé
  */
 int Terrain::calculLoyer() {
-    
+    // Calcul du loyer en fonction du nombre de maisons/hotel construits
+    switch(this->getMaison()) {
+        case 0 : return this->loyer;
+        case 1 : return this->loyer * 5;
+        case 2 : return this->loyer * 15;
+        case 3 : return this->loyer * 45;
+        case 4 : return this->loyer * 80;
+        case 5 : return this->loyer * 125;
+        default : throw "Le nombre de maisons/hotels est incorrect";
+    }    
 }
 
 
