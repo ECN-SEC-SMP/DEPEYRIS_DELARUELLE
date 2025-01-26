@@ -36,7 +36,7 @@ void Propriete::acheter(Joueur * joueur) {
     if(joueur->getArgent() < this->prixAcquisition) {
         std::cout << "Le joueur n'a pas assez d'argent pour acheter la propriete" << std::endl;
     } else {
-        std::cout << "Voulez-vous acheter " << this->getNom() << " pour " << this->prixAcquisition << " ? (oui/non)" << std::endl;
+        std::cout << "Voulez-vous acheter " << this->getNom() << " pour " << this->prixAcquisition << " M ? (oui/non)" << std::endl;
         std::cin >> reponse;
         if(reponse == "oui") {
             joueur->removeArgent(this->prixAcquisition);

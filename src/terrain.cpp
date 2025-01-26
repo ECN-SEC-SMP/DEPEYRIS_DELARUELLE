@@ -61,23 +61,24 @@ void Terrain::construireMaison(int * nbM, int * nbH) {
     } else if(this->getProprietaire()->getArgent() < this->getPrixMaison()) {
         std::cout << "Le proprietaire n'a pas assez d'argent pour acheter une maison" << std::endl;
     } else if(this->getMaison() < 4 ) {
-        std::cout << "il n'y a plus de maisons a construire" << std::endl;
         if (nbM==0){
             std::cout << "Il n'y a plus de maisons disponible" << std::endl;
         }
+        else {
+            this->setMaison(this->getMaison() + 1); // update le nombre global
+            nbM--;
+        }
     } else if(this->getMaison() == 4 ) {
-        std::cout << "il n'y a plus d'hotels a construire" << std::endl;
         if (nbH==0){
             std::cout << "Il n'y a plus d'hotels disponible" << std::endl;
-            return;
+        }
+        else {
+            this->setMaison(this->getMaison() + 1);
+            nbH--;
         }
     } else {
-        this->setMaison(this->getMaison() + 1); // update le nombre global
-        if (this->getMaison()==5){
-            nbH--;
-        } else {
-            nbM --;
-        }
+        std::cout << "Erreur ! " << std::endl ;
+        return;
     }
 }
 
@@ -142,10 +143,10 @@ int Terrain::calculLoyer() {
     switch(this->getMaison()) {
         case 0 : return this->loyer;
         case 1 : return this->loyer * 5;
-        case 2 : return this->loyer * 15;
-        case 3 : return this->loyer * 45;
-        case 4 : return this->loyer * 80;
-        case 5 : return this->loyer * 125;
+        case 2 : return this->loyer * 10;
+        case 3 : return this->loyer * 15;
+        case 4 : return this->loyer * 20;
+        case 5 : return this->loyer * 30;
         default : std::cout << "Le nombre de maisons/hotels est incorrect" << std::endl;
     }    
 }

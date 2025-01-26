@@ -25,7 +25,7 @@
  * @brief Construct a new Joueur:: Joueur object
  * 
  */
-Joueur::Joueur() : nom("Joueur"), portefeuille(1500), nbCartePrison(0), tourPrison(0), proprietes(0), position(0) {}
+Joueur::Joueur() : nom("Joueur"), portefeuille(1500), nbCartePrison(0), tourPrison(-1), proprietes(0), position(0) {}
 
 /**
  * @brief Construct a new Joueur:: Joueur object
@@ -33,7 +33,7 @@ Joueur::Joueur() : nom("Joueur"), portefeuille(1500), nbCartePrison(0), tourPris
  * @param nom 
  * @param argent 
  */
-Joueur::Joueur(std::string nom, int argent) : nom(nom), portefeuille(argent), nbCartePrison(0), tourPrison(0), proprietes(0), position(0) {}
+Joueur::Joueur(std::string nom, int argent) : nom(nom), portefeuille(argent), nbCartePrison(0), tourPrison(-1), proprietes(0), position(0) {}
 
 
 /**
@@ -64,7 +64,7 @@ void Joueur::removePropriete(Propriete * propriete) {
  * @param numCase 
  */
 void Joueur::deplacer(int numCase) {
-    if ((numCase <= this->getPosition()) && this->getTourPrison() == -1) {
+    if ((numCase == 0 || this->getPosition() > numCase) && this->getTourPrison() == -1) {
         this->addArgent(200);
         std::cout << this->getNom() << " passe par la case depart. Il reçoit 200 M." << std::endl ;
     }

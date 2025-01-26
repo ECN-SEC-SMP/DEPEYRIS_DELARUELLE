@@ -23,9 +23,7 @@ Chance::Chance() : Case("Chance") {}
  */
 void Chance::action(Joueur* joueur){
     cartesChance carteRandom;
-    int randomNumber = 0;
-    lancerDe(0,15);
-    carteRandom = static_cast<cartesChance>(randomNumber);
+    carteRandom = static_cast<cartesChance>(lancerDe(0, 15));
 
     switch (carteRandom)
     {
